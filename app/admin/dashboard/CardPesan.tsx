@@ -40,6 +40,7 @@ function CardPesan({
           alt={pesan.from}
           width={400}
           height={400}
+          loading="eager"
           className="mt-2 rounded-sm object-cover"
         />
       )}

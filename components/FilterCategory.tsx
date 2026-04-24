@@ -41,7 +41,7 @@ function FilterCategory({ isAdmin = false }: { isAdmin?: boolean }) {
   };
 
   return (
-    <div className="bg-background/35 fixed top-0 z-50 h-32 w-full backdrop-blur-3xl">
+    <div className="bg-background/35 fixed top-0 z-10 h-32 w-full backdrop-blur-3xl">
       <div className="absolute bottom-1.5 mx-auto flex w-full items-center justify-center gap-4 overflow-x-auto px-5">
         {/* SELECT KATEGORI */}
         <Select

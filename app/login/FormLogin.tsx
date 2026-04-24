@@ -49,10 +49,10 @@ function FormLogin() {
     });
     toast.promise(res, {
       loading: "Loading...",
-      success: (data) => `Selamat datang ${data.username}!`,
+      success: (data) => `Selamat datang ${data.user.username}!`,
       error: (data) => `Error : ${data.message}`,
     });
-
+    await res;
     router.push("/admin/dashboard");
   };
 

@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import Image from "next/image";
+import Navbar from "@/components/Navbar";
 
 export default function Home() {
   return (
     <div className="bg-background min-h-dvh">
-      <div className="flex flex-col justify-center gap-1 pt-20 text-center">
+      <Navbar />
+      <div className="mt-30 flex flex-col justify-center gap-1 px-2 text-center">
         <h1 className="text-primary font-mono text-4xl font-semibold tracking-widest">
           SIGMA
         </h1>
@@ -23,9 +25,9 @@ export default function Home() {
           <Button variant={"secondary"} className="font-mono text-2xl">
             <Link href={"/kirim"}>Kirim Pesan</Link>
           </Button>
-          <Button variant={"outline"} className="mt-2 font-mono text-2xl">
+          {/* <Button variant={"outline"} className="mt-2 font-mono text-2xl">
             Tentang Kami
-          </Button>
+          </Button> */}
         </div>
       </div>
     </div>
