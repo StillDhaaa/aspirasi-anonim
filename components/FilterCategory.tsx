@@ -17,7 +17,6 @@ function FilterCategory({ isAdmin = false }: { isAdmin?: boolean }) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Local State agar UI berubah seketika tanpa menunggu server
   const [category, setCategory] = useState(
     searchParams.get("categories") || "0",
   );

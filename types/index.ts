@@ -1,7 +1,7 @@
 export interface Aspirasi {
   id: string;
   content: string;
-  category_id: number | string;
+  category_id: number;
   image_url: string | null;
   status: string;
   created_at: string;

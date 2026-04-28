@@ -3,6 +3,16 @@ import { Aspirasi } from "@/types";
 import { CiCircleMore } from "react-icons/ci";
 import Image from "next/image";
 import MoreButton from "@/components/MoreButton";
+import ShareComponent from "@/components/ShareComponent";
+
+const category = [
+  "",
+  "Random",
+  "Saran",
+  "Keluhan",
+  "Apresiasi",
+  "Confess & Curhat",
+];
 
 function CardPesan({
   pesan,
@@ -25,9 +35,21 @@ function CardPesan({
         {pesan.from}
       </h3>
 
-      {pageComponent && <MoreButton isAdmin={isAdmin} pesan={pesan} />}
+      {pageComponent ? (
+        <MoreButton isAdmin={isAdmin} pesan={pesan} />
+      ) : (
+        <ShareComponent
+          id={pesan.id}
+          judul={`Pesan SIGMA dari ${pesan.from}`}
+          text={`Lihat Pesan SIGMA yang Dikirim dari ${pesan.from} ini! \n`}
+        />
+      )}
       <h4 className="text-muted-foreground -mt-1 truncate">
         kepada: {pesan.to}
+      </h4>
+
+      <h4 className="text-muted-foreground -mt-0.5 truncate font-bold">
+        {category[pesan.category_id]}
       </h4>
 
       <p className="mt-1 wrap-break-word whitespace-pre-wrap">

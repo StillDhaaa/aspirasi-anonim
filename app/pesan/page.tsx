@@ -3,6 +3,7 @@ import FilterCategory from "@/components/FilterCategory";
 import Navbar from "@/components/Navbar";
 import ListPesan from "../admin/dashboard/ListPesan";
 import { CardPesanSkeleton } from "../admin/dashboard/CardPesanSkeleton";
+import OverlayCard from "@/components/OverlayCard";
 
 export const dynamic = "force-dynamic";
 
@@ -29,6 +30,10 @@ async function page({
     },
   );
   const result = await fetchData.json();
+  const Highlight = () => {
+    if (query.id) return <OverlayCard />;
+    return <></>;
+  };
 
   const listAspirasi = result.data || [];
   const hasMore = result.hasMore || false;
@@ -55,6 +60,7 @@ async function page({
             initialAspirasi={listAspirasi}
             initialHasMore={hasMore}
           />
+          <Highlight />
         </Suspense>
       </div>
     </div>
