@@ -80,6 +80,7 @@ function FormLogin() {
         </Label>
         <Input
           id="password"
+          type="password"
           placeholder={`Password`}
           className=""
           {...register("password")}

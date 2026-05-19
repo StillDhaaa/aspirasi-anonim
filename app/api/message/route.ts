@@ -15,6 +15,7 @@ export async function GET(req: NextRequest) {
       const { data, error } = await supabaseAdmin
         .from("messages")
         .select("*")
+        .eq("status", "accepted")
         .eq("id", id)
         .single();
 

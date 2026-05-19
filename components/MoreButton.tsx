@@ -55,7 +55,6 @@ function MoreButton({
               className="z-1001 m-auto"
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Komponen ini HANYA diload ke HTML saat modal terbuka */}
               <CardPesan
                 pesan={pesan}
                 isAdmin={isAdmin}

@@ -4,6 +4,7 @@ import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { ReactNode, useEffect, useState } from "react";
 import CardPesan from "@/app/admin/dashboard/CardPesan";
+import { toast } from "sonner";
 
 export default function OverlayCard({}: {}) {
   const router = useRouter();
@@ -12,6 +13,7 @@ export default function OverlayCard({}: {}) {
 
   const [isOpen, setIsOpen] = useState(true);
   const [data, setData] = useState<any>(null);
+  const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
 
   const id = searchParams.get("id");
@@ -39,6 +41,11 @@ export default function OverlayCard({}: {}) {
     const fetchData = async () => {
       const res = await fetch(`/api/message?id=${id}`);
       const result = await res.json();
+      if (!res.ok) {
+        console.log(result.error.message);
+        setLoading(false);
+        return setData(null);
+      }
       setData(result);
       setLoading(false);
     };
@@ -46,8 +53,17 @@ export default function OverlayCard({}: {}) {
   }, []);
 
   const ResultData = () => {
+    if (error)
+      return (
+        <>
+          <p>Pesan tidak ditemukan!</p>
+        </>
+      );
     if (data) return <CardPesan pesan={data} pageComponent={false} />;
-    if (!data) return <></>;
+    if (!data) {
+      toast.error("Pesan tidak ditemukan!");
+      return <></>;
+    }
   };
 
   return (

@@ -11,6 +11,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
+import { toast } from "sonner";
 
 function FilterCategory({ isAdmin = false }: { isAdmin?: boolean }) {
   const router = useRouter();
@@ -36,12 +37,13 @@ function FilterCategory({ isAdmin = false }: { isAdmin?: boolean }) {
   };
 
   const refreshPage = () => {
+    toast.success("Merefresh Data!");
     router.refresh();
   };
 
   return (
     <div className="bg-background/35 fixed top-0 z-10 h-32 w-full backdrop-blur-3xl">
-      <div className="absolute bottom-1.5 mx-auto flex w-full items-center justify-center gap-4 overflow-x-auto px-5">
+      <div className="absolute bottom-1.5 mx-auto flex w-full items-center justify-center gap-4 overflow-x-auto overflow-y-hidden px-5">
         {/* SELECT KATEGORI */}
         <Select
           value={category}
@@ -111,7 +113,7 @@ function FilterCategory({ isAdmin = false }: { isAdmin?: boolean }) {
               onClick={() => {
                 refreshPage();
               }}
-              className="text-primary h-9 w-9"
+              className="text-primary h-9 w-9 overflow-y-hidden duration-300 ease-in-out hover:scale-110 active:scale-90"
             />
           </>
         )}
